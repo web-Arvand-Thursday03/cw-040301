@@ -32,7 +32,7 @@ $categories = $stmt->fetchAll();
             </a>
             <nav class="d-inline-flex mt-2 mt-md-0 me-md-auto">
                 <?php foreach ($categories as $category): ?>
-                    <a class="fw-bold me-3 py-2 link-body-emphasis text-decoration-none" href="#">
+                    <a class="fw-bold me-3 py-2 link-body-emphasis text-decoration-none" href="index.php?id=<?= $category['id'] ?>">
                         <?= $category['title'] ?>
                     </a>
                 <?php endforeach  ?>

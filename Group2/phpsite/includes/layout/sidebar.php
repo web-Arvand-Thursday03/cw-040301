@@ -25,7 +25,9 @@
         <ul class="list-group list-group-flush p-0">
             <?php foreach ($categories as $category): ?>
                 <li class="list-group-item">
-                    <a class="link-body-emphasis text-decoration-none" href="index.php?id=<?= $category['id'] ?>"><?= $category['title'] ?></a>
+                    <a class="link-body-emphasis text-decoration-none" href="index.php?id=<?= $category['id'] ?>">
+                        <?= $category['title'] ?>
+                    </a>
                 </li>
             <?php endforeach ?>
         </ul>
