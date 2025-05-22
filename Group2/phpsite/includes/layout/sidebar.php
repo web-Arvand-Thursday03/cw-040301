@@ -1,6 +1,26 @@
 <?php
 
 // var_dump($categories);
+$invalidName = "";
+$invalidEmail = "";
+$successfullSubscriberInsert = "";
+if (isset($_POST['insertSubscriber'])) {
+    if (empty($_POST['name'])) {
+        $invalidName = "درج نام الزامی است";
+    }
+    if (empty($_POST['email'])) {
+        $invalidEmail = "درج ایمیل الزامی است";
+    }
+
+
+    if (!empty($_POST['name']) && !empty($_POST['email'])) {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $stmt = $connection->query("INSERT INTO subscribers (name,email) VALUES ('$name','$email')");
+        $successfullSubscriberInsert = "تبریک! عضویت شما با موفقیت انجام شد";
+    }
+}
+
 
 ?>
 <div class="col-lg-4">
@@ -37,17 +57,20 @@
     <div class="card mt-4">
         <p class="fw-bold fs-6 card-header text-center">عضویت در خبرنامه</p>
         <div class="card-body">
-            <form>
+            <form method="post">
                 <div class="mb-3">
                     <label class="form-label">نام</label>
-                    <input type="text" class="form-control" />
+                    <input type="text" class="form-control" name="name" />
+                    <p class="text-danger"> <?= $invalidName ?></p>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">رایانامه</label>
-                    <input type="email" class="form-control" />
+                    <input type="email" class="form-control" name="email" />
+                    <p class="text-danger"> <?= $invalidEmail ?></p>
                 </div>
                 <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-secondary">ارسال</button>
+                    <button type="submit" class="btn btn-secondary" name="insertSubscriber">ارسال</button>
+                    <p class="text-success"> <?= $successfullSubscriberInsert ?></p>
                 </div>
             </form>
         </div>
